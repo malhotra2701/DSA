@@ -4,7 +4,7 @@ public:
         unordered_map<int,int> mp;
         int n = nums.size();
         int left = 0;
-        int sum = 0;
+        long long sum = 0;
         int res = INT_MAX;
         for(int right=0;right<n;right++){
             mp[nums[right]]++;
