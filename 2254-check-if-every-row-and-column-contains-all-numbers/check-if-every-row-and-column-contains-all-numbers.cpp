@@ -1,25 +1,25 @@
 class Solution {
 public:
-    bool checkValid(vector<vector<int>>& mat) {
-        int n = mat.size();
+    bool checkValid(vector<vector<int>>& arr) {
+        int n = arr.size();
         for(int i=0;i<n;i++){
             unordered_set<int> st;
+            unordered_set<int> s;
             for(int j=0;j<n;j++){
-                if(st.find(mat[i][j])!=st.end()){
+                if(st.find(arr[i][j])!=st.end()){
                     return false;
                 }
-                st.insert(mat[i][j]);
+                else{
+                    st.insert(arr[i][j]);
+                }
+                if(s.find(arr[j][i])!=s.end()){
+                    return false;
+                }
+                else{
+                    s.insert(arr[j][i]);
+                }
             }
             st.clear();
-        }
-        for(int j=0;j<n;j++){
-            unordered_set<int> s;
-            for(int i=0;i<n;i++){
-                if(s.find(mat[i][j])!=s.end()){
-                    return false;
-                }
-                s.insert(mat[i][j]);
-            }
             s.clear();
         }
         return true;
