@@ -1,20 +1,22 @@
 class Solution {
 public:
     string resultingString(string s) {
-        int n = s.size();
         stack<char> st;
+        string result = "";
+        int n = s.size();
         for(int i=0;i<n;i++){
             if(st.empty()){
                 st.push(s[i]);
                 continue;
             }
-            if(abs((s[i]-'a')-(st.top()-'a'))==1 || abs((s[i]-'a')-(st.top()-'a'))==25){
+            if(abs(st.top()-s[i])==1 || abs(st.top()-s[i])==25){
                 st.pop();
             }
-            else
-            st.push(s[i]);
+            else{
+                st.push(s[i]);
+            }
         }
-        string res = "";
+        string res ="";
         while(!st.empty()){
             res.push_back(st.top());
             st.pop();
