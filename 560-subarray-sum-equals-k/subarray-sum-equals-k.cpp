@@ -9,11 +9,11 @@ public:
         for(int i=0;i<n;i++){
             prefixsum += nums[i];
             int remove = prefixsum - k;
-            if(mp[remove]){
-                count = count + mp[remove];
-            }
+            count = count + mp[remove];
             mp[prefixsum]++;
         }
         return count;
     }
 };
+//TC O(N)
+//SC O(N)
