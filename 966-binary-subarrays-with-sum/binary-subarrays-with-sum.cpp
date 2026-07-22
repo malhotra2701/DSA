@@ -1,6 +1,9 @@
 class Solution {
 public:
     int helper(vector<int> &nums,int k){
+        if(k<0){
+            return 0;
+        }
         int n = nums.size();
         int left = 0;
         int count = 0;
@@ -19,3 +22,5 @@ public:
         return helper(nums,goal) - helper(nums,goal-1);
     }
 };
+//TC O(N)
+//SC O(1)
