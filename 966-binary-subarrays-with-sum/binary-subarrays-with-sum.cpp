@@ -1,17 +1,21 @@
 class Solution {
 public:
-    int numSubarraysWithSum(vector<int>& nums, int goal) {
-        int prefixsum = 0;
+    int helper(vector<int> &nums,int k){
         int n = nums.size();
-        unordered_map<int,int> mp;
+        int left = 0;
         int count = 0;
-        mp[0]=1;
-        for(int i=0;i<n;i++){
-            prefixsum += nums[i];
-            int remove = prefixsum - goal;
-            count = count + mp[remove];
-            mp[prefixsum]++;
+        int sum = 0;
+        for(int right = 0;right<n;right++){
+            sum = sum + nums[right];
+            while(sum>k && left<=right){
+                sum = sum - nums[left];
+                left++;
+            }
+            count = count + (right-left+1);
         }
         return count;
+    }
+    int numSubarraysWithSum(vector<int>& nums, int goal) {
+        return helper(nums,goal) - helper(nums,goal-1);
     }
 };
