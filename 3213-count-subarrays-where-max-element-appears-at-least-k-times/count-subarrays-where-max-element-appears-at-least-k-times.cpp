@@ -1,16 +1,15 @@
 class Solution {
 public:
     long long countSubarrays(vector<int>& nums, int k) {
-        long long count = 0;
-        long long n = nums.size();
         int mx = INT_MIN;
+        long long n = nums.size();
         for(int i=0;i<n;i++){
             mx = max(mx,nums[i]);
         }
-        long long temp = 0;
-        long long res = 0;
         int left = 0;
-        for(int right=0;right<n;right++){
+        long long count = 0;
+        int temp = 0;
+        for(int right = 0;right<n;right++){
             if(nums[right]==mx){
                 temp++;
             }
@@ -20,8 +19,10 @@ public:
                 }
                 left++;
             }
-            res = res + (right-left+1);
+            count+=right-left+1;
         }
-        return (n*(n+1))/2 - res;
+        return (n*(n+1))/2 - count;
     }
 };
+//TC O(N)
+//SC O(1)
