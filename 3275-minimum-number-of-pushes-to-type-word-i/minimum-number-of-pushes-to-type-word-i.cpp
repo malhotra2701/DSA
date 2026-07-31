@@ -2,17 +2,21 @@ class Solution {
 public:
     int minimumPushes(string word) {
         int n = word.size();
-        if(n<=8){
-            return n;
+        int res = 0;
+        for(int i=0;i<n;i++){
+            if(i<=7){
+                res++;
+            }
+            else if(i>=8 && i<=15){
+                res += 2;
+            }
+            else if(i>=16 && i<=23){
+                res += 3;
+            }
+            else{
+                res += 4;
+            }
         }
-        else if(n>=9 && n<=16){
-            return 8 + (n-8)*2;
-        }
-        else if(n>=17 && n<=24){
-            return 24 + (n-16)*3;
-        }
-        else{
-            return 48 + (n-24)*4;
-        }
+        return res;
     }
 };
