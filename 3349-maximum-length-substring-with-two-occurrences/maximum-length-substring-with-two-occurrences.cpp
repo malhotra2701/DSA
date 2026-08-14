@@ -4,11 +4,11 @@ public:
         int left = 0;
         int res = 0;
         int n = s.size();
-        unordered_map<char,int> mp;
+        vector<int> f(26,0);
         for(int right=0;right<n;right++){
-            mp[s[right]]++;
-            while(mp[s[right]]>2 && left<=right){
-                mp[s[left]]--;
+            f[s[right]-'a']++;
+            while(f[s[right]-'a']>2 && left<=right){
+                f[s[left]-'a']--;
                 left++;
             }
             res = max(res,right-left+1);
