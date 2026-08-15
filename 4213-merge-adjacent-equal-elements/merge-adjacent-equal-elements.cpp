@@ -2,10 +2,11 @@ class Solution {
 public:
     vector<long long> mergeAdjacent(vector<int>& nums) {
         stack<long long> st;
-        for(int i=0;i<nums.size();i++){
+        int n = nums.size();
+        for(int i=0;i<n;i++){
             long long x = nums[i];
             if(st.empty()){
-                st.push(x);
+                st.push(nums[i]);
                 continue;
             }
             while(!st.empty() && st.top()==x){
