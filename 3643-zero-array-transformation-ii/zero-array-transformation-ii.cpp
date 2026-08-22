@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool helper(int mid, vector<int> &nums, vector<vector<int>> &queries){
+    bool checker(vector<int> &nums,vector<vector<int>> &queries , int mid){
         int n = nums.size();
         vector<int> temp(n,0);
         for(int i=0;i<mid;i++){
@@ -11,11 +11,10 @@ public:
                 temp[end+1] -= queries[i][2];
             }
         }
-        for(int i=1;i<n;i++){
-            temp[i] += temp[i-1];
-        }
+        int sum = 0;
         for(int i=0;i<n;i++){
-            if(temp[i]<nums[i]){
+            sum += temp[i];
+            if(sum<nums[i]){
                 return false;
             }
         }
@@ -23,9 +22,7 @@ public:
     }
     int minZeroArray(vector<int>& nums, vector<vector<int>>& queries) {
         bool flag = true;
-        int n = queries.size();
-        int s = nums.size();
-        for(int i=0;i<s;i++){
+        for(int i=0;i<nums.size();i++){
             if(nums[i]!=0){
                 flag = false;
                 break;
@@ -34,17 +31,18 @@ public:
         if(flag){
             return 0;
         }
+        int n = queries.size();
         int low = 0;
-        int high = queries.size();
+        int high = n;
         int ans = -1;
         while(low<=high){
             int mid = low + (high-low)/2;
-            if(helper(mid,nums,queries)){
+            if(checker(nums,queries,mid)){
                 ans = mid;
-                high = mid-1;
+                high = mid -1;
             }
             else{
-                low = mid + 1;
+                low = mid+1;
             }
         }
         return ans;
