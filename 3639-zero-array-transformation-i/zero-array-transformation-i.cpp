@@ -12,11 +12,10 @@ public:
                 temp[end+1] -= 1;
             }
         }
-        for(int i=1;i<s;i++){
-            temp[i] += temp[i-1];
-        }
+        int sum = 0;
         for(int i=0;i<s;i++){
-            if(temp[i]<nums[i]){
+            sum += temp[i];
+            if(sum<nums[i]){
                 return false;
             }
         }
