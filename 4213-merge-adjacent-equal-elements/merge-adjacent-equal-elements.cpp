@@ -20,3 +20,5 @@ public:
         return temp;
     }
 };
+//TC O(N)
+//SC O(N)
