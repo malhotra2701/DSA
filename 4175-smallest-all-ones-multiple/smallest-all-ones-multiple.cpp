@@ -1,11 +1,11 @@
 class Solution {
 public:
     int minAllOneMultiple(int k) {
-        long long num = 0;
-        for(int length=1;length<=k;length++){
-            num = (num*10 + 1)%k;
-            if(num==0){
-                return length;
+        int temp = 0;
+        for(int i=1;i<=k;i++){
+            temp = (temp*10 + 1)%k;
+            if(temp==0){
+                return i;
             }
         }
         return -1;
