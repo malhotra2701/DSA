@@ -2,16 +2,20 @@ class Solution {
 public:
     string shortestBeautifulSubstring(string s, int k) {
         string res = "";
-        for(int i=0;i<s.size();i++){
-            int count = 0;
+        int n = s.size();
+        for(int i=0;i<n;i++){
             string temp = "";
-            for(int j=i;j<s.size();j++){
+            int count = 0;
+            for(int j=i;j<n;j++){
+                temp += s[j];
                 if(s[j]=='1'){
                     count++;
                 }
-                temp += s[j];
-                if(count == k){
-                    if(res.empty()|| (temp.size()<res.size()) || (temp.size()==res.size() && temp<res)){
+                if(count>k){
+                    break;
+                }
+                if(count==k){
+                    if(res.empty() || (temp.size()<res.size()) || (temp.size()==res.size() && temp<res)){
                         res = temp;
                     }
                 }
