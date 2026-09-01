@@ -1,51 +1,53 @@
 class Solution {
 public:
-    vector<vector<int>> sortMatrix(vector<vector<int>>& arr) {
-        int n = arr.size();
+    vector<vector<int>> sortMatrix(vector<vector<int>>& grid) {
         int diff = 0;
+        int n = grid.size();
         while(diff<n){
             vector<int> temp;
             for(int i=0;i<n;i++){
-                for(int j=0;j<n;j++){
+                for(int j =0;j<n;j++){
                     if(i-j==diff){
-                        temp.push_back(arr[i][j]);
+                        temp.push_back(grid[i][j]);
                     }
                 }
             }
-            sort(temp.begin(),temp.end(),greater<int>());
             int m = 0;
+            sort(temp.begin(),temp.end(),greater<int>());
             for(int i=0;i<n;i++){
                 for(int j=0;j<n;j++){
                     if(i-j==diff){
-                        arr[i][j]=temp[m];
+                        grid[i][j]=temp[m];
                         m++;
                     }
                 }
             }
             diff++;
+            temp.clear();
         }
         int res = 1;
         while(res<n){
             vector<int> t;
             for(int i=0;i<n;i++){
-                for(int j=0;j<n;j++){
+                for(int j =0;j<n;j++){
                     if(j-i==res){
-                        t.push_back(arr[i][j]);
+                        t.push_back(grid[i][j]);
                     }
                 }
             }
-            sort(t.begin(),t.end());
             int p = 0;
+            sort(t.begin(),t.end());
             for(int i=0;i<n;i++){
                 for(int j=0;j<n;j++){
                     if(j-i==res){
-                        arr[i][j]=t[p];
+                        grid[i][j]=t[p];
                         p++;
                     }
                 }
             }
             res++;
+            t.clear();
         }
-        return arr;
+        return grid;
     }
 };
