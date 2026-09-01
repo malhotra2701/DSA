@@ -22,7 +22,6 @@ public:
                     }
                 }
             }
-            temp.clear();
             diff++;
         }
         int res = 1;
@@ -45,7 +44,6 @@ public:
                     }
                 }
             }
-            t.clear();
             res++;
         }
         return arr;
