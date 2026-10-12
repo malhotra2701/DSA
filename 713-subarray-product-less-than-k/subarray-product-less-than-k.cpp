@@ -6,7 +6,7 @@ public:
         int count = 0;
         long long p = 1;
         for(int right = 0;right<n;right++){
-            p = p * nums[right];
+            p = p*nums[right];
             while(p>=k && left<=right){
                 p = p/nums[left];
                 left++;
