@@ -1,22 +1,22 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        int right = 0;
         int n = s.size();
-        unordered_map<char,int> mp;
-        int count = 0;
         int left = 0;
-        for(int right = 0;right<n;right++){
+        int res = 0;
+        unordered_map<char,int> mp;
+        for(int right=0;right<n;right++){
             mp[s[right]]++;
-            while(mp.size()==3 && left<=right){
-                count = count + (n-right);
+            while(mp.size()>2 && left<=right){
                 mp[s[left]]--;
                 if(mp[s[left]]==0){
                     mp.erase(s[left]);
                 }
                 left++;
             }
+            res += right-left+1;
         }
-        return count;
+        long long total = (1LL*n*(n+1))/2;
+        return (int)(total-res);
     }
 };
