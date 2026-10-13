@@ -1,10 +1,10 @@
 class Solution {
 public:
-    int helper (vector<int> &nums,int k){
+    int helper(vector<int> &nums,int k){
         int n = nums.size();
-        unordered_map<int,int> mp;
         int left = 0;
         int res = 0;
+        unordered_map<int,int> mp;
         for(int right=0;right<n;right++){
             mp[nums[right]]++;
             while(mp.size()>k && left<=right){
