@@ -2,13 +2,13 @@ class Solution {
 public:
     int maxScore(vector<int>& nums, int k) {
         int n = nums.size();
-        int res = 0;
         int lsum = 0;
         int rsum = 0;
+        int res = 0;
         for(int i=0;i<k;i++){
             lsum += nums[i];
         }
-        res = lsum + rsum;
+        res = lsum;
         int i = k-1;
         int j = n-1;
         while(i>=0){
