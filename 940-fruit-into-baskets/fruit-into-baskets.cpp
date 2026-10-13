@@ -2,9 +2,9 @@ class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
-        int res = 0;
-        int left = 0;
         unordered_map<int,int> mp;
+        int left = 0;
+        int res = 0;
         for(int right=0;right<n;right++){
             mp[fruits[right]]++;
             while(mp.size()>2 && left<=right){
