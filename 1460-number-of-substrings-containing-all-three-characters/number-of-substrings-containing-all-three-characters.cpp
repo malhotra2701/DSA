@@ -2,9 +2,9 @@ class Solution {
 public:
     int numberOfSubstrings(string s) {
         int n = s.size();
+        unordered_map<char,int> mp;
         int left = 0;
         int res = 0;
-        unordered_map<char,int> mp;
         for(int right=0;right<n;right++){
             mp[s[right]]++;
             while(mp.size()>2 && left<=right){
@@ -16,7 +16,7 @@ public:
             }
             res += right-left+1;
         }
-        long long total = (1LL*n*(n+1))/2;
-        return (int)(total-res);
+        long long total = (1LL *n*(n+1))/2;
+        return total - res;
     }
 };
