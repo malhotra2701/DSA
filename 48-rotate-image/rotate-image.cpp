@@ -10,7 +10,12 @@ public:
             }
         }
         for(int i=0;i<n;i++){
-            reverse(matrix[i].begin(),matrix[i].end());
+            int j=0,k=n-1;
+            while(j<k){
+                swap(matrix[i][j],matrix[i][k]);
+                j++;
+                k--;
+            }
         }
     }
 };
