@@ -3,23 +3,24 @@ public:
     void setZeroes(vector<vector<int>>& matrix) {
         int m = matrix.size();
         int n = matrix[0].size();
-        vector<vector<int>> res = matrix;
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                if(matrix[i][j]==0){
-                    for(int k=0;k<n;k++){
-                        res[i][k]=0;
-                    }
-                    for(int k=0;k<m;k++){
-                        res[k][j]=0;
-                    }
+        unordered_set<int> str;
+        unordered_set<int> stc;
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matrix[i][j] == 0) {
+                    str.insert(i);
+                    stc.insert(j);
                 }
             }
         }
-        for(int i=0;i<m;i++){
-            for(int j=0;j<n;j++){
-                matrix[i][j] = res[i][j];
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (str.find(i) != str.end() || stc.find(j) != stc.end()) {
+                    matrix[i][j] = 0;
+                }
             }
         }
     }
 };
+//TC O(m*n)
+//SC O(M+n)
