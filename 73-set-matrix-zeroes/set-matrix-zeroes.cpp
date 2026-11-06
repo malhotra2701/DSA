@@ -19,7 +19,7 @@ public:
             }
             else{
                 for(int j=0;j<n;j++){
-                    matrix[i][j]=0;
+                    matrix[i][j] = 0;
                 }
             }
         }
@@ -35,3 +35,5 @@ public:
         }
     }
 };
+//TC O(m*n)
+//SC O(m+n)
