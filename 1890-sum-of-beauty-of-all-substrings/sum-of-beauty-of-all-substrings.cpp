@@ -9,15 +9,13 @@ public:
                 f[s[j]-'a']++;
                 int mx = INT_MIN;
                 int mn = INT_MAX;
-                for(int i=0;i<26;i++){
-                    if(f[i]>0){
-                        mx = max(mx,f[i]);
-                        mn = min(mn,f[i]);
+                for(int k=0;k<26;k++){
+                    if(f[k]>0){
+                        mx = max(f[k],mx);
+                        mn = min(f[k],mn);
                     }
                 }
-                if(mx!=mn){
-                    res += mx - mn;
-                }
+                res += mx - mn;
             }
         }
         return res;
